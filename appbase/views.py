@@ -26,3 +26,5 @@ def createRoom(request):
             return redirect('home')
     context={'form':form}
     return render(request, 'appbase/room_form.html',context)
+
+

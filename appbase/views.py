@@ -1,7 +1,6 @@
-from multiprocessing import context
-from django.shortcuts import render
+from django.shortcuts import render , redirect
 from .models import Room
-
+from .forms import RoomForm
 
 
 # Create your views here.
@@ -19,5 +18,11 @@ def room(request, pk):
     return render(request, 'appbase/room.html',context)
 
 def createRoom(request):
-    context={}
+    form=RoomForm()
+    if request.method == 'POST':
+        form = RoomForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    context={'form':form}
     return render(request, 'appbase/room_form.html',context)

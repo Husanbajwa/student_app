@@ -5,25 +5,24 @@
 
 
 <div>
-<div>
-    {% for room in rooms %}
-    <div>
-        <span>@{{room.host.username}}</span>
-        <h5>{{room.id}} -- <a href="{% url 'room' room.id %}">{{room.name}}</a></h5>
-        <small>{{room.topic.name}}</small>
-        <hr>
+    <b><a href="{%url 'create-room' %}">CREATE ROOM</a><b>    
+        <div>
+        {% for room in rooms %}
+        <div>
+            <span>@{{room.host.username}}</span>
+            <h5>{{room.id}} -- <a href="{% url 'room' room.id %}">{{room.name}}</a></h5>
+            <small>{{room.topic.name}}</small>
+            <hr>
+        </div>
+
+
+        {% endfor %}
+
+
     </div>
-    
-    
-    {% endfor %}
-
-
-</div>
 
 </div>
 
 
 
 {% endblock content %}
-
-

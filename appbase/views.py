@@ -11,6 +11,11 @@ from .forms import RoomForm
 
 
 def loginPage(request):
+    # remove login again manual(user can't login again if he is already loggedin)  
+    if request.user.is_authenticated :
+        return redirect('home')
+
+
     if request.method =='POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -26,8 +31,6 @@ def loginPage(request):
             return redirect('home')
         else:
             messages.error(request, 'Username OR Password does not exist ')
-
-
     context={}
     return render(request, 'appbase/login_registration.html',context)
 

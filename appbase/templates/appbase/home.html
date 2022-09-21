@@ -1,25 +1,37 @@
 {% extends 'main.html' %}
 {% block content %}
 
-<h1>home page</h1>
+<style>
+    .home-container{
+        display: grid;
+        grid-template-columns: 1fr 3fr 1fr;
+    }
+</style>
 
 
-<div>
-    <b><a href="{%url 'create-room' %}">CREATE ROOM</a><b>    
-        <div>
-        {% for room in rooms %}
-        <div>
-            <span>@{{room.host.username}}</span>
-            <h5>{{room.id}} -- <a href="{% url 'room' room.id %}">{{room.name}}</a></h5>
-            <small>{{room.topic.name}}</small>
-            <hr>
-        </div>
+
+<div class="home-container">
+
+    <div class="side-bar-container">
+        {%include 'appbase/topic_component.html'%}
+    </div>
 
 
-        {% endfor %}
+    <div>
+        <h5>{{room_count}} rooms available</h5>
+        <a href="{%url 'create-room' %}"><b>CREATE ROOM</b></a>
+                <hr>
+                <div>
+                    {%include 'appbase/feed_component.html' %}
+                </div>
 
 
     </div>
+<div>
+    <h3>RECENT ACTIVITY</h3>
+    <hr>
+    {%include 'appbase/activity_component.html'%}
+</div>
 
 </div>
 

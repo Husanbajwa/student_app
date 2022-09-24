@@ -1,4 +1,3 @@
-from webbrowser import get
 from django.shortcuts import render , redirect
 from django.http import HttpResponse
 from django.contrib import messages
@@ -9,8 +8,6 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate , login , logout
 from .models import Room, Topic , Message
 from .forms import RoomForm
-
-
 
 def loginPage(request):
     page='login'
@@ -33,11 +30,9 @@ def loginPage(request):
     context={'page':page}
     return render(request, 'appbase/login_registration.html',context)
 
-
 def logoutUser(request):
     logout(request)
     return redirect('home')
-
 
 def registerPage(request):
     form=UserCreationForm()
@@ -88,6 +83,16 @@ def room(request, pk):
             'participants':participants
             }
     return render(request, 'appbase/room.html',context)
+
+def userProfile(request,pk):
+    user = User.objects.get(id=pk)
+    rooms = user.room_set.all()
+    room_messages = user.message_set.all()
+    topics = Topic.objects.all()
+    context={'user':user,'rooms': rooms,'room_messages':room_messages,'topics':topics}
+    return render(request , 'appbase/profile.html',context)
+
+
 
 
 @login_required(login_url='login')

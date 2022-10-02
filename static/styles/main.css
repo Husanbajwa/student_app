@@ -1,0 +1,10 @@
+body{
+  background-color: aquamarine;
+}
+:root
+{
+  --color-one: yellow;
+}
+.content{
+  margin-top: 50px;
+}

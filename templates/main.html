@@ -5,12 +5,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>studybuddy</title>
+    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" type="text/css" href="{% static 'styles/main.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/nav.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/common.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/color.css' %}"/>
+    <title>study</title>
 </head>
 <body>
-    
-    {% include 'nav.html' %}
+    <!-- navigation bar -->
+        {% include 'nav.html' %}
+    <!-- error/instruction messages -->
     {% if messages %}
     <ul class="messages">
         {% for message in messages %}
@@ -18,9 +24,13 @@
         {% endfor %}
     </ul>
     {% endif %}
-    {% block content%}
+    
 
+    <!-- main content -->
+    <div class="content">
+    {% block content%}
     {% endblock content%}
+    </div>
 
 </body>
 

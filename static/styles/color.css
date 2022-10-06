@@ -1,5 +1,11 @@
 :root
 {
-  --color-nav-bg: #3f4156;
+  --color-nav-bg:#02223e;
+  --nav-search-bar-bg: rgb(255, 255, 255 , 0.2);
+  --nav-search-bar-type:#f0f8ff;
+  --color-nav-menu-bg: #021221;
+  --nav-text:#f0f8ff;
+  --nav-hover:#2b94f1;
+  --content-bg:#2d2d39;
 
 }

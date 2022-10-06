@@ -3,9 +3,9 @@
     <div class="menu-icon"><span class='bx bx-menu'></span></div>
 
     <div class="logo">
-        <div class="logo-img">
+        {% comment %} <div class="logo-img">
             <img src="{% static 'images/logo.png' %}" alt="">
-        </div>
+        </div> {% endcomment %}
         <div>LOGO-NAME</div>
     </div>
     <div class="nav-items">
@@ -13,21 +13,11 @@
         <li><a href="#">About</a></li>
         <li><a href="#">Blogs</a></li>
     </div>
-
-
-
-
-
-
-
-
-
-
-
     <div class="search-icon"><span class='bx bx-search-alt-2' </span></span></div>
     <div class="cancel-icon"><span class='bx bx-x' </span></span></div>
+    
     <form method="GET" action="{%url 'home'%}">
-        <input type="text" class="search-data" name='q' placeholder="Search " / required>
+        <input type="text" class="search-data" name='q' placeholder="Search" required autocomplete="off" />
         <button type="submit"><i class='bx bx-search-alt-2'></i></button>
     </form>
 
@@ -36,11 +26,11 @@
 
     {% if request.user.is_authenticated %}
 
-    <div class="profile">
+    <div class="nav-profile">
         <div class="profile-pic">
             <img src="{% static 'images/default.png' %}" alt="">
         </div>
-        <div>{{request.user}}</div>
+        <div class="username">{{request.user}}</div>
         <div class="profile-icon dropdownbtn"><span class='bx bx-chevron-down'></span></div>
         <div class="profile-icon dropupbtn"><span class='bx bx-chevron-up'></span></div>
         <div class="dropdown">
@@ -54,4 +44,3 @@
     <div class="login"><a href="{% url 'login' %}">Login</a></div>
     {% endif %}
 </nav>
-<script src="{% static 'js/nav-script.js'%}"></script>

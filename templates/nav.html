@@ -1,7 +1,6 @@
 {% load static %}
 <nav>
     <div class="menu-icon"><span class='bx bx-menu'></span></div>
-
     <div class="logo">
         {% comment %} <div class="logo-img">
             <img src="{% static 'images/logo.png' %}" alt="">
@@ -23,9 +22,7 @@
 
 
 
-
     {% if request.user.is_authenticated %}
-
     <div class="nav-profile">
         <div class="profile-pic">
             <img src="{% static 'images/default.png' %}" alt="">
@@ -34,13 +31,12 @@
         <div class="profile-icon dropdownbtn"><span class='bx bx-chevron-down'></span></div>
         <div class="profile-icon dropupbtn"><span class='bx bx-chevron-up'></span></div>
         <div class="dropdown">
-            <li><a href="{% url 'logout' %}">profile</a></li>
-            <li><a href="{% url 'logout' %}">Settings</a></li>
+            {% comment %} <li><a href="{% url 'user-profile' room.host.id %}">profile</a></li> {% endcomment %}
+            <li><a href="{% url 'update-user' %}">Settings</a></li>
             <li><a href="{% url 'logout' %}">Logout</a></li>
         </div>
     </div>
     {% else %}
-
     <div class="login"><a href="{% url 'login' %}">Login</a></div>
     {% endif %}
 </nav>

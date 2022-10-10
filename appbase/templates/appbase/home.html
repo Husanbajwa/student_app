@@ -11,7 +11,7 @@
           <div class="mobile-menu">
             <div class="mobile-menuItems">
               <a class="btn btn--main btn--pill" href="{% url 'topics' %}">Browse Topics</a>
-              <a class="btn btn--main btn--pill" href="#">Recent Activities</a>
+              <a class="btn btn--main btn--pill" href="{% url 'activity' %}">Recent Activities</a>
             </div>
           </div>
 
@@ -45,47 +45,3 @@
       </div>
     </main>
 {% endblock content %}
-
-
-
-
-
-
-
-
-
-
-
-{% comment %} 
-
-{% extends 'main.html' %}
-{% block css %}
-{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'styles/home.css' %}" />
-{% endblock css %}
-
-{% block content %}
-<div class="home-container">
-    <div class="topics">
-        {%include 'appbase/topic_component.html'%}
-    </div>
-    <div class="roomlist">
-        <h5>{{room_count}} rooms available</h5>
-        <a href="{%url 'create-room' %}"><b>CREATE ROOM</b></a>
-        <hr>
-        <div>
-            {%include 'appbase/feed_component.html' %}
-        </div>
-
-    </div>
-    <div class="recent-activity">
-        <h3>RECENT ACTIVITY</h3>
-        <hr>
-        {%include 'appbase/activity_component.html'%}
-    </div>
-
-</div>
-
-
-
-{% endblock content %} {% endcomment %}

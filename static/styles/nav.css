@@ -48,6 +48,8 @@ nav .nav-items li a:hover {
   color: var(--nav-hover);
 }
 
+/* nav search bar */
+
 nav form {
   display: flex;
   height: 35px;

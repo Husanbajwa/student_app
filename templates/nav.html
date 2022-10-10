@@ -14,11 +14,12 @@
     </div>
     <div class="search-icon"><span class='bx bx-search-alt-2' </span></span></div>
     <div class="cancel-icon"><span class='bx bx-x' </span></span></div>
-    
+    {% comment %} <div class="search-bar"> {% endcomment %}
     <form method="GET" action="{%url 'home'%}">
         <input type="text" class="search-data" name='q' placeholder="Search" required autocomplete="off" />
         <button type="submit"><i class='bx bx-search-alt-2'></i></button>
     </form>
+    {% comment %} <div> {% endcomment %}
 
 
 

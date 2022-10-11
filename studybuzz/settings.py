@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'appbase.apps.AppbaseConfig',
 ]
 
+AUTH_USER_MODEL ='appbase.User'
+
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

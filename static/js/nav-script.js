@@ -7,7 +7,7 @@ const profileBtn = document.querySelector(".profile");
 const dropUpBtn = document.querySelector(".dropupbtn");
 const dropDownBtn = document.querySelector(".dropdownbtn");
 const dropDownItem = document.querySelector(".dropdown");
-const contenShift = document.querySelector(".content");
+const contenShift = document.querySelector(".layout");
 menuBtn.onclick = () => {
     menuitems.classList.add("active");
     menuBtn.classList.add("hide");

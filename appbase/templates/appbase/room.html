@@ -69,8 +69,8 @@
               <div class="room__hosted">
                 <p>Hosted By</p>
                 <a href="{% url 'user-profile' room.host.id %}" class="room__author">
-                  <div class="avatar avatar--small">
-                    <img src="https://randomuser.me/api/portraits/men/37.jpg" />
+                  <div class="avatar avatar--medium">
+                    <img src="{{room.host.avatar.url}}" />
                   </div>
                   <span>{{room.host.username}}</span>
                 </a>
@@ -89,8 +89,8 @@
                   <div class="thread__top">
                     <div class="thread__author">
                       <a href="{% url 'user-profile' message.user.id %}" class="thread__authorInfo">
-                        <div class="avatar avatar--small">
-                          <img src="https://randomuser.me/api/portraits/men/37.jpg" />
+                        <div class="avatar avatar--medium">
+                          <img src="{{message.user.avatar.url}}" />
                         </div>
                         <span>@{{message.user.username}}}</span>
                       </a>
@@ -133,16 +133,13 @@
             {% for user in participants %}
             <a href="{% url 'user-profile' user.id %}" class="participant">
               <div class="avatar avatar--medium">
-                <img src="https://randomuser.me/api/portraits/men/37.jpg" />
+                <img src="{{user.avatar.url}}" />
               </div>
               <p>{{user.username}}
                 <span>@{{user.username}}</span>
               </p>
             </a>
             {% endfor %}
-
-
-
           </div>
         </div>
         <!--  End -->
@@ -151,65 +148,3 @@
     <script src="script.js"></script>
 
     {% endblock content %}
-
-
-
-
-
-
-
-{% comment %} 
-{% extends 'main.html' %}
-{% block content %} {% endcomment %}
-
-<style>
-    .room-container {
-        display: grid;
-        grid-template-columns: 3fr 1fr;
-    }
-</style>
-
-<div class="room-container">
-    <div>
-        <h1>{{room.name}}</h1>
-        <p>{{room.description}}</p>
-        <div class="comment-wrapper">
-            <h3>conversation</h3>
-            <hr>
-            {% for message in room_messages %}
-            <div>
-                {%if request.user == message.user%}
-                <a href="{% url 'delete-message' message.id %}">Delete</a>
-                {% endif %}
-                <small>
-                    @{{message.user}}
-                    <br>
-                    <!-- add a filter to create a since time format -->
-                    {{message.created|timesince}}
-                </small>
-                <p>{{message.body}}</p>
-                <hr>
-            </div>
-            {% endfor %}
-        </div>
-        {% if request.user.is_authenticated %}
-        <div class="comment-form">
-            <form method="POST" action="">
-                {%csrf_token%}
-                <input type="text" name="body" placeholder="Write Your Message Here ...." />
-            </form>
-        </div>
-        {% endif %}
-    </div>
-    <div>
-        <h3>Participant</h3>
-        <hr>
-        {% for user in participants %}
-        <div>
-            <p>@{{user.username}}</p>
-        </div>
-
-        {% endfor %}
-    </div>
-</div>
-{% comment %} {% endblock content %} {% endcomment %}

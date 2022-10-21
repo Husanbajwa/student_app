@@ -1,6 +1,4 @@
-from ast import BinOp
-from asyncio.windows_events import NULL
-from enum import unique
+from email.policy import default
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
@@ -9,7 +7,7 @@ class User(AbstractUser):
     name = models.CharField(max_length=200 ,null = True)
     email = models.EmailField(unique = True , null = True)
     bio = models.TextField(null = True)
-    # avatar = 
+    avatar = models.ImageField(null=True,default="default.png")
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS =[]
 

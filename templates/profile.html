@@ -3,7 +3,7 @@
 <main class="profile-page layout layout--3">
     <div class="container">
         <!-- Topics Start -->
-        {%include 'appbase/topic_component.html'%}
+        {%include 'topic_component.html'%}
         <!-- Topics End -->
 
         <!-- Room List Start -->
@@ -35,13 +35,13 @@
                     </h2>
                 </div>
             </div>
-            {% include 'appbase/feed_component.html' %}
+            {% include 'feed_component.html' %}
             
         </div>
         <!-- Room List End -->
 
         <!-- Activities Start -->
-        {%include 'appbase/activity_component.html'%}
+        {%include 'activity_component.html'%}
         <!-- Activities End -->
     </div>
 </main>
@@ -52,14 +52,14 @@
 <h1>{{user.username}}</h1>
 <div class="profile-container">
     <div>
-        {% include 'appbase/topic_component.html' %}
+        {% include 'topic_component.html' %}
     </div>
 
     <div>
-        {% include 'appbase/feed_component.html' %}
+        {% include 'feed_component.html' %}
     </div>
     <div>
-        {% include 'appbase/activity_component.html' %}
+        {% include 'activity_component.html' %}
     </div>
 </div> {% endcomment %}
 

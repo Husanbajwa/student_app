@@ -27,7 +27,9 @@
   text-rendering: optimizeLegibility;
   /* color: inherit; */
   font-size: inherit;
-}
+  /* border: 2px solid red;
+  border-radius: 3px; */
+  }
 
 html {
   font-size: 50%;

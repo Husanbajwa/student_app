@@ -12,6 +12,7 @@ def loginPage(request):
     # remove login again manual(user can't login again if he is already loggedin)  
     if request.user.is_authenticated :
         return redirect('home')
+    
     if request.method =='POST':
         email = request.POST.get('email').lower()
         password = request.POST.get('password')
@@ -19,6 +20,7 @@ def loginPage(request):
             user =User.objects.get(email=email)
         except:
             messages.error(request, 'User does not exist.')
+
         user = authenticate(request, email=email , password=password)
         if user is not None:
             login(request,user)
@@ -26,7 +28,7 @@ def loginPage(request):
         else:
             messages.error(request, 'Username OR Password does not exist ')
     context={'page':page}
-    return render(request, 'appbase/login_registration.html',context)
+    return render(request, 'login_registration.html',context)
 
 def logoutUser(request):
     logout(request)
@@ -47,11 +49,12 @@ def registerPage(request):
             messages.error(request, 'An ERROR occured during registration')
 
     context={'form':form}
-    return render(request, 'appbase/login_registration.html',context)
+    return render(request, 'login_registration.html',context)
 
 
 def home(request):
     q=request.GET.get('q') if request.GET.get('q') != None else ''
+    
     rooms= Room.objects.filter(
         Q(topic__name__icontains=q) |
         Q(name__icontains=q) |
@@ -61,7 +64,7 @@ def home(request):
     room_count = rooms.count()
     room_messages = Message.objects.filter(Q(room__topic__name__icontains=q))
     context = {'rooms': rooms, 'topics': topics,'room_count':room_count,'room_messages':room_messages}
-    return render(request, 'appbase/home.html', context)
+    return render(request, 'home.html', context)
 
 
 def room(request, pk):
@@ -81,7 +84,7 @@ def room(request, pk):
             'room_messages':room_messages,
             'participants':participants
             }
-    return render(request, 'appbase/room.html',context)
+    return render(request, 'room.html',context)
 
 def userProfile(request,pk):
     user = User.objects.get(id=pk)
@@ -89,7 +92,7 @@ def userProfile(request,pk):
     room_messages = user.message_set.all()
     topics = Topic.objects.all()
     context={'user':user,'rooms': rooms,'room_messages':room_messages,'topics':topics}
-    return render(request , 'appbase/profile.html',context)
+    return render(request , 'profile.html',context)
 
 
 
@@ -110,7 +113,7 @@ def createRoom(request):
         )
         return redirect('home')
     context={'form':form, 'topics':topics}
-    return render(request, 'appbase/room_form.html',context)
+    return render(request, 'room_form.html',context)
 
 
 @login_required(login_url='login')
@@ -130,7 +133,7 @@ def updateRoom(request, pk):
         room.save()
         return redirect('home')
     context = {'form':form,'topics':topics,'room':room}
-    return render(request, 'appbase/room_form.html',context)
+    return render(request, 'room_form.html',context)
 
 
 @login_required(login_url='login')
@@ -140,7 +143,7 @@ def deleteRoom(request,pk):
     if request.method == 'POST':
         room.delete()
         return redirect('home')
-    return render(request, 'appbase/delete.html' ,{'obj':room})
+    return render(request, 'delete.html' ,{'obj':room})
 
 
 @login_required(login_url='login')
@@ -153,7 +156,7 @@ def deleteMessage(request,pk):
     if request.method == 'POST':
         message.delete()
         return redirect('home')
-    return render(request, 'appbase/delete.html' ,{'obj':message})
+    return render(request, 'delete.html' ,{'obj':message})
 
     
 @login_required(login_url='login')
@@ -166,17 +169,17 @@ def updateUser(request):
             form.save()
             return redirect('user-profile',pk = user.id)
     context={'form':form}
-    return render(request,'appbase/update-user.html',context)
+    return render(request,'update-user.html',context)
 
 
 def topicsPage(request):
     q=request.GET.get('q') if request.GET.get('q') != None else ''
     topics = Topic.objects.filter(name__icontains=q)
     context = {'topics':topics}
-    return render(request,'appbase/topic.html',context)
+    return render(request,'topic.html',context)
 
 
 def activityPage(request):
     room_messages = Message.objects.all()
     context={"room_messages":room_messages}
-    return render(request,'appbase/activity.html',context)
+    return render(request,'activity.html',context)

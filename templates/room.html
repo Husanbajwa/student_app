@@ -1,5 +1,10 @@
 {% extends 'main.html' %}
 {% block content %}
+{% if user.is_authenticated %}
+  <input id ="logged-in-user" type="hidden" value={{ user.id }}>
+  <h1> logged in as {{user.username}} </h1>
+  {% endif %}
+
     <main class="profile-page layout layout--2">
       <div class="container">
         <!-- Room Start -->
@@ -60,7 +65,7 @@
             {% endif %}
 
           </div>
-          <div class="room__box scroll">
+          <div class="room__box scroll" >
             <div class="room__header scroll">
               <div class="room__info">
                 <h3>{{room.name}}</h3>
@@ -82,8 +87,9 @@
               </div> {% endcomment %}
               <span class="room__topics">{{room.topic}}</span>
             </div>
-            <div class="room__conversation">
-              <div class="threads scroll">
+            <div class="room__conversation" >
+              <div class="threads scroll" style="border: 2px solid red;
+              border-radius: 3px;">
                 {% for message in room_messages %}
                 <div class="thread">
                   <div class="thread__top">
@@ -92,7 +98,7 @@
                         <div class="avatar avatar--medium">
                           <img src="{{message.user.avatar.url}}" />
                         </div>
-                        <span>@{{message.user.username}}}</span>
+                        <span>@{{message.user.username}}</span>
                       </a>
                         <span class="thread__date">{{message.created|timesince}} ago</span>
                     </div>
@@ -119,9 +125,9 @@
             </div>
           </div>
           <div class="room__message">
-            <form action="" method="POST">
+            <form id="send-message-form" action="" method="POST">
               {% csrf_token %}
-              <input name="body" placeholder="Write your message here..." /></form>
+              <input name="body" id="input-message" placeholder="Write your message here..." /></form>
           </div>
         </div>
         <!-- Room End -->
@@ -145,6 +151,12 @@
         <!--  End -->
       </div>
     </main>
-    <script src="script.js"></script>
+    {% load static %}
+    <script type="text/javascript"> 
+      var username = "{{user.username}}";
+      var avatar = "{{user.avatar.url}}"
+    </script>
+    <script src="{% static 'js/messages.js' %}"></script>
+  
 
     {% endblock content %}

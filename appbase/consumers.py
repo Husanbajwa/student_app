@@ -3,7 +3,7 @@ from channels.consumer import AsyncConsumer
 from channels.db import database_sync_to_async
 from django.contrib.auth import get_user_model
 
-# from chat.models import Thread, ChatMessage
+from appbase.models import Thread, ChatMessage
 
 User = get_user_model()
 
@@ -44,13 +44,13 @@ class ChatConsumer(AsyncConsumer):
         # if not thread_obj:
             # print('Error:: Thread id is incorrect')
 
-        # await self.create_chat_message(thread_obj, sent_by_user, msg)
+        # await self.create_chat_message( sent_by_user, msg)
 
         other_user_chat_room = f'user_chatroom_{send_to_id}'
         self_user = self.scope['user']
         response = {
             'message': msg,
-            'sent_by': self_user.id
+            'sent_by': self_user.id,
             # 'thread_id': thread_id
         }
 

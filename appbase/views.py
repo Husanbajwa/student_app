@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate , login , logout
 from .models import Room, Topic , Message , User
 from .forms import RoomForm ,UserForm ,MyUserCreationForm
+from appbase.models import Thread
 
 def loginPage(request):
     page='login'
@@ -180,3 +181,13 @@ def activityPage(request):
     room_messages = Message.objects.all()
     context={"room_messages":room_messages}
     return render(request,'appbase/activity.html',context)
+
+@login_required
+def messages_page(request):
+    # threads = Thread.objects.by_user(user=request.user).prefetch_related('chatmessage_thread').order_by('timestamp')
+    threads = Thread.objects.by_user(user=request.user).prefetch_related('chatmessage_thread').order_by('timestamp')
+    context = {
+        'Threads': threads
+    }
+    return render(request,'appbase/message.html',context)
+

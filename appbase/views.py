@@ -8,6 +8,9 @@ from .models import Room, Topic , Message , User
 from .forms import RoomForm ,UserForm ,MyUserCreationForm
 from appbase.models import Thread
 
+def index(request):
+    return render(request, 'appbase/index.html')
+
 def loginPage(request):
     page='login'
     # remove login again manual(user can't login again if he is already loggedin)  

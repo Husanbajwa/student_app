@@ -4,9 +4,10 @@ from django.contrib import messages
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate , login , logout
-from .models import Room, Topic , Message , User
-from .forms import RoomForm ,UserForm ,MyUserCreationForm
-from appbase.models import Thread
+from .models import *
+from .forms import *
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 def index(request):
     return render(request, 'appbase/index.html')
@@ -193,4 +194,137 @@ def messages_page(request):
         'Threads': threads
     }
     return render(request,'appbase/message.html',context)
+
+
+
+
+# blog views
+def blog_detail(request, slug):
+    context = {}
+    try:
+        blog_obj = BlogModel.objects.filter(slug=slug).first()
+        context['blog_obj'] = blog_obj
+    except Exception as e:
+        print(e)
+    return render(request, 'appbase/blog/blog_detail.html', context)
+
+
+def see_blog(request):
+    context = {}
+
+    try:
+        blog_objs = BlogModel.objects.filter(user=request.user)
+        context['blog_objs'] = blog_objs
+    except Exception as e:
+        print(e)
+
+    print(context)
+    return render(request, 'appbase/blog/see_blog.html', context)
+
+
+def add_blog(request):
+    context = {'form': BlogForm}
+    try:
+        if request.method == 'POST':
+            form = BlogForm(request.POST)
+            print(request.FILES)
+            image = request.FILES.get('image', '')
+            title = request.POST.get('title')
+            user = request.user
+
+            if form.is_valid():
+                print('Valid')
+                content = form.cleaned_data['content']
+
+            blog_obj = BlogModel.objects.create(
+                user=user, title=title,
+                content=content, image=image
+            )
+            print(blog_obj)
+            return redirect('/add-blog/')
+    except Exception as e:
+        print(e)
+
+    return render(request, 'appbase/blog/add_blog.html', context)
+
+
+# def blog_update(request, slug):
+#     context = {}
+#     try:
+
+#         blog_obj = BlogModel.objects.get(slug=slug)
+
+#         if blog_obj.user != request.user:
+#             return redirect('/')
+
+#         initial_dict = {'content': blog_obj.content}
+#         form = BlogForm(initial=initial_dict)
+#         if request.method == 'POST':
+#             form = BlogForm(request.POST)
+#             print(request.FILES)
+#             image = request.FILES['image']
+#             title = request.POST.get('title')
+#             user = request.user
+
+#             if form.is_valid():
+#                 content = form.cleaned_data['content']
+
+#             blog_obj = BlogModel.objects.create(
+#                 user=user, title=title,
+#                 content=content, image=image
+#             )
+
+#         context['blog_obj'] = blog_obj
+#         context['form'] = form
+#     except Exception as e:
+#         print(e)
+
+#     return render(request, 'appbase/blog/update_blog.html', context)
+
+def blog_update(request, slug):
+    context = {}
+    try:
+        blog_obj = BlogModel.objects.get(slug=slug)
+
+        if blog_obj.user != request.user:
+            return redirect('/')
+
+        initial_dict = {'content': blog_obj.content}
+        form = BlogForm(initial=initial_dict)
+
+        if request.method == 'POST':
+            form = BlogForm(request.POST, request.FILES)
+            if form.is_valid():
+                content = form.cleaned_data['content']
+                title = form.cleaned_data['title']
+                # image = form.cleaned_data.get('image')
+                # if image:
+                #     blog_obj.image = image
+                blog_obj.content = content
+                blog_obj.title = title
+                blog_obj.save()
+                return redirect('see_blog')
+
+        context['blog_obj'] = blog_obj
+        context['form'] = form
+
+    except BlogModel.DoesNotExist:
+        print(f"Blog with slug {slug} does not exist")
+    except Exception as e:
+        print(e)
+
+    return render(request, 'appbase/blog/update_blog.html', context)
+
+
+def blog_delete(request, id):
+    try:
+        blog_obj = BlogModel.objects.get(id=id)
+
+        if blog_obj.user == request.user:
+            blog_obj.delete()
+
+    except Exception as e:
+        print(e)
+
+    return redirect('/see-blog/')
 

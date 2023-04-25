@@ -1,0 +1,80 @@
+#fr-logo {
+    visibility: hidden;
+}
+form .fr-element p{
+    color: black;
+    font-size: medium;
+}
+/* add-blog */
+.btn {
+    background-color: rgb(255, 225, 0);
+    color: aliceblue;
+    font-weight: 550;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    transition: all ease-in-out 0.3s;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.15);
+}
+.container {
+    max-width: 120rem;
+    width: 90%;
+    margin: auto;
+    margin-top: 15px;
+    font-size: 20px;
+}
+.col-md-12 , .row p{
+    margin-top: 10px ;
+    margin-bottom: 5px;
+    align-items: center;
+}
+
+.col-md-12 label ,input{
+color: rgb(255, 255, 255);
+}
+
+.col-md-12 input::placeholder{
+ color: black;
+}
+.fr-element {
+    height:42vh ;
+}
+.fr-element p{
+    color: rgb(255, 255, 255);
+}
+
+
+
+
+
+/* update */
+.see-blog th ,.see-blog td
+{
+    color: rgb(39, 9, 121);
+}
+.see-blog .container{
+    display: flex;
+  justify-content: center; /* center horizontally */
+  align-items: center; /* center vertically */
+}
+.see-blog th ,.see-blog td
+{
+    padding-left: 50px;
+    padding-right: 50px;
+}
+.see-blog tr{
+    height: 70px;
+
+}
+.see-blog .container .update {
+ background-color: rgb(25, 252, 0);
+}
+
+.see-blog .container .delete {
+    background-color: rgb(252, 109, 0);
+   }
+   

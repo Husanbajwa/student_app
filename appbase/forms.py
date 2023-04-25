@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Room , User
+from .models import *
 from django.contrib.auth.forms import UserCreationForm
 
 
@@ -19,3 +19,12 @@ class UserForm(ModelForm):
     class Meta:
         model = User
         fields = ['avatar' , 'name' , 'username' , 'email' , 'bio']
+
+
+# blog forms 
+
+class BlogForm(ModelForm):
+    class Meta:
+        model = BlogModel
+        fields = ['title', 'content']
+        exclude = ['host','participants']

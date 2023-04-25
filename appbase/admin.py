@@ -3,7 +3,7 @@ from django import forms
 from django.core.exceptions import ValidationError
 from django.db.models import Q
 # Register your models here.
-from .models import Message, Room, Topic , User ,Thread ,ChatMessage
+from .models import *
 
 admin.site.register(User)
 admin.site.register(Room)
@@ -43,3 +43,7 @@ class ThreadAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Thread, ThreadAdmin)
+
+
+admin.site.register(BlogModel)
+admin.site.register(Profile)

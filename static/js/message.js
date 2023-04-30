@@ -1,8 +1,10 @@
+
+
+// Realtime messages
 let input_message = $('#input-message')
 let message_body = $('.msg_card_body')
 let send_message_form = $('#send-message-form')
 const USER_ID = $('#logged-in-user').val()
-
 let loc = window.location
 let wsStart = 'ws://'
 
@@ -70,9 +72,6 @@ function newMessage(message, sent_by_id, thread_id) {
     else {
         message_element = `
                     <div class="d-flex mb-4 received">
-                    <div class="img_cont_msg">
-                    <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" class="rounded-circle user_img_msg">
-                    </div>
                     <div class="msg_cotainer">
                         ${message}
                     <span class="msg_time">8:40 AM, Today</span>

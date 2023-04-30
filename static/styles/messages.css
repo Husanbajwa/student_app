@@ -2,9 +2,7 @@ body,
 html {
   height: 100%;
   margin: 0;
-  background: #7f7fd5;
-  background: -webkit-linear-gradient(to right, #91eae4, #86a8e7, #7f7fd5);
-  background: linear-gradient(to right, #91eae4, #86a8e7, #7f7fd5);
+  background: #2D2D39
 }
 
 .chat {
@@ -14,7 +12,7 @@ html {
 .card {
   height: 90%;
   border-radius: 15px !important;
-  background-color: rgba(0, 0, 0, 0.4) !important;
+  background-color: #3F4156 !important;
 }
 .contacts_body {
   padding: 0.75rem 0 !important;
@@ -24,7 +22,7 @@ html {
 .msg_card_body {
   overflow-y: auto;
   max-height: 65%;
-  padding-bottom: 20px;
+  /* padding-bottom: 20px; */
 }
 .card-header {
   border-radius: 15px 15px 0 0 !important;
@@ -91,9 +89,7 @@ html {
   padding: 5px 10px;
   margin-bottom: 15px !important;
 }
-.active {
-  background-color: rgba(0, 0, 0, 0.3);
-}
+
 .user_img {
   height: 70px;
   width: 70px;
@@ -143,12 +139,7 @@ html {
   margin-left: 50px;
   margin-top: 5px;
 }
-.video_cam span {
-  color: white;
-  font-size: 20px;
-  cursor: pointer;
-  margin-right: 20px;
-}
+
 .msg_cotainer {
   margin-top: auto;
   margin-bottom: auto;
@@ -222,7 +213,7 @@ html {
 }
 .action_menu ul li:hover {
   cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 0, 0, 0.2);
 }
 @media (max-width: 576px) {
   .contacts_card {

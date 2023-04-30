@@ -45,5 +45,4 @@ class ThreadAdmin(admin.ModelAdmin):
 admin.site.register(Thread, ThreadAdmin)
 
 
-admin.site.register(BlogModel)
-admin.site.register(Profile)
+# admin.site.register(BlogModel)

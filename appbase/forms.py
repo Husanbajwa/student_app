@@ -23,8 +23,8 @@ class UserForm(ModelForm):
 
 # blog forms 
 
-class BlogForm(ModelForm):
-    class Meta:
-        model = BlogModel
-        fields = ['title', 'content']
-        exclude = ['host','participants']
+# class BlogForm(ModelForm):
+#     class Meta:
+#         model = BlogModel
+#         fields = ['title', 'content']
+#         exclude = ['host','participants']

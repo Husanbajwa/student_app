@@ -19,7 +19,14 @@
                     <p>@{{user.username}}</p>
                     {% if request.user == user %}
                     <a href="{% url 'update-user' %}" class="btn btn--main btn--pill">Edit Profile</a>
+                    {% else %}
+                    <form method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" id="username" name="username">
+                        <button type="submit" class="btn btn--main btn--pill">Message</button>
+                    </form>
                     {% endif %}
+                    
                 </div>
                 <div class="profile__about">
                     <h3>About</h3>

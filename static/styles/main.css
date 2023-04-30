@@ -386,7 +386,7 @@ nav .cancel-icon {
 
 /*========== components ==========*/
 .container {
-  max-width: 120rem;
+  max-width: 2000px;
   width: 90%;
   margin: auto;
 }
@@ -784,6 +784,7 @@ nav .cancel-icon {
   color: var(--color-dark-light);
 }
 
+
 /*========== Room List Room ==========*/
 
 .roomListRoom {
@@ -939,7 +940,7 @@ nav .cancel-icon {
 ================================*/
 
 .create-room.layout .layout__box {
-  max-width: 68rem;
+  max-width: 120rem;
 }
 
 /*==============================
@@ -947,7 +948,8 @@ nav .cancel-icon {
 ================================*/
 
 .update-account.layout .layout__box {
-  max-width: 68rem;
+  margin-top: 150px;
+  max-width: 120rem;
 }
 
 /*==============================
@@ -1044,7 +1046,6 @@ nav .cancel-icon {
 =>  Room
 ================================*/
 
-.room,
 .participants {
   background: var(--color-dark);
   max-height: 87.5vh;
@@ -1052,19 +1053,27 @@ nav .cancel-icon {
   overflow: hidden;
   position: relative;
 }
-
+.room{
+  background: var(--color-dark);
+  /* max-height: 87.5vh; */
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 0.7rem;
+  overflow: hidden;
+  position: relative;
+}
 @media screen and (max-width: 900px) {
   .participants {
     display: none;
   }
-
   .layout--2 > .container > div:first-child {
     flex-basis: 100%;
   }
 }
 
 .room__top,
-.participants__top {
+.participants__top,
+.messages__top {
   background: var(--color-dark-light);
   display: flex;
   justify-content: space-between;
@@ -1072,7 +1081,6 @@ nav .cancel-icon {
   padding: 1rem 2rem;
   position: relative;
 }
-
 .room__top svg,
 .thread__top svg {
   width: 1.6rem;
@@ -1088,11 +1096,13 @@ nav .cancel-icon {
 }
 
 .room__topLeft h3,
-.participants__top {
+.participants__top,
+.messages__top h3 {
   text-transform: uppercase;
   font-weight: 500;
   color: var(--color-light);
 }
+
 
 .room__topLeft svg {
   width: 1.6rem;
@@ -1109,42 +1119,31 @@ nav .cancel-icon {
   fill: var(--color-main-light);
 }
 
+
 .room__header {
-  max-height: 30vh;
-  overflow-y: auto;
-  position: absolute;
-  width: 95%;
+  /* max-height: 300vh; */
+  /* overflow: visible; */
+  /* position: absolute; */
   background: var(--color-dark);
   z-index: 999;
   top: 4.4rem;
   padding-top: 2rem;
   padding-bottom: 1rem;
 }
-
 @media screen and (max-width: 500px) {
   .room__header {
     top: 4.3rem;
     padding-right: 2rem;
   }
 }
-
+/* 
 .room__box {
-  padding-left: 2rem;
-  padding-right: 2rem;
-  height: 80.5vh;
-  /* overflow-y: auto; */
-  padding-bottom: 0;
-}
+  padding-left: 0;
+  padding-right: 0;
 
-@media screen and (max-width: 500px) {
-  .room__box {
-    padding-left: 2.5rem;
-    padding-right: 2rem;
-    height: 80.5vh;
-    overflow-y: auto;
-    padding-bottom: 0;
-  }
-}
+  padding-bottom: 0;
+} */
+
 
 .room__info {
   display: flex;
@@ -1177,6 +1176,7 @@ nav .cancel-icon {
   text-decoration: underline;
 }
 
+
 .room__topics {
   padding: 0.5rem 1.5rem;
   background: var(--color-dark-light);
@@ -1204,7 +1204,7 @@ nav .cancel-icon {
   border-radius: 0.7rem;
   overflow-y: auto;
   height: 100%;
-  margin-top: 28vh;
+  margin-top: 5vh;
   padding: 0 2rem 4rem 2rem;
 }
 
@@ -1253,6 +1253,16 @@ nav .cancel-icon {
   background: transparent;
 }
 
+.room__message {
+  padding: 2rem;
+  position: absolute;
+  z-index: 111;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: transparent;
+}
+
 .room__message > form > input {
   resize: none;
   background-color: var(--color-dark-light);
@@ -1283,6 +1293,11 @@ nav .cancel-icon {
   justify-content: flex-start;
   gap: 0.5rem;
 }
+.messages__top  {
+  border-radius: 7px;
+  /* text-transform: none; */
+}
+
 
 .participants__list {
   padding: 2rem;
@@ -1308,4 +1323,37 @@ nav .cancel-icon {
   font-weight: 500;
   color: var(--color-main);
   font-weight: 1.4rem;
+}
+.room__top{
+position: absolute;
+}
+.messages__top,
+.room__top{
+  left: 0px;
+  width: 100%;
+}
+
+.messages__top
+{
+  left: -17px;
+  width: 110%;
+} 
+
+.roomListRoom__image{
+  text-align: center;
+}
+.roomListRoom__image img{
+  min-width: 200px;
+  max-width: 655px;
+  min-height: 100px;
+  max-height: 347px;
+}
+
+.empty_messages{
+  padding-top: 10px;
+  text-align: center;
+
+}
+.room__header{
+  margin-top: 30px;
 }

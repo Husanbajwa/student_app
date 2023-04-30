@@ -111,3 +111,8 @@ function newMessage(message, sent_by_id, thread_id) {
         let thread_id = chat_id.replace('chat_', '')
         return thread_id
     }
+
+
+
+
+ 

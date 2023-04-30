@@ -1,80 +1,103 @@
-#fr-logo {
-    visibility: hidden;
-}
-form .fr-element p{
-    color: black;
-    font-size: medium;
-}
-/* add-blog */
-.btn {
-    background-color: rgb(255, 225, 0);
-    color: aliceblue;
-    font-weight: 550;
-    border: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 1rem;
-    cursor: pointer;
-    transition: all ease-in-out 0.3s;
-    padding: 1rem 2rem;
-    border-radius: 5px;
-    box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.15);
-}
-.container {
-    max-width: 120rem;
-    width: 90%;
-    margin: auto;
-    margin-top: 15px;
-    font-size: 20px;
-}
-.col-md-12 , .row p{
-    margin-top: 10px ;
-    margin-bottom: 5px;
-    align-items: center;
-}
-
-.col-md-12 label ,input{
-color: rgb(255, 255, 255);
-}
-
-.col-md-12 input::placeholder{
- color: black;
-}
-.fr-element {
-    height:42vh ;
-}
-.fr-element p{
-    color: rgb(255, 255, 255);
-}
-
-
-
-
-
-/* update */
-.see-blog th ,.see-blog td
-{
-    color: rgb(39, 9, 121);
-}
-.see-blog .container{
+.profile-page {
     display: flex;
-  justify-content: center; /* center horizontally */
-  align-items: center; /* center vertically */
-}
-.see-blog th ,.see-blog td
-{
-    padding-left: 50px;
-    padding-right: 50px;
-}
-.see-blog tr{
-    height: 70px;
-
-}
-.see-blog .container .update {
- background-color: rgb(25, 252, 0);
-}
-
-.see-blog .container .delete {
-    background-color: rgb(252, 109, 0);
-   }
-   
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #f7f7f7;
+  }
+  
+  .container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  /* Styles for the room box */
+  .room__box {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin: 20px 0;
+    padding: 20px;
+  }
+  
+  .room__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .room__info h3 {
+    font-size: 24px;
+    margin: 0;
+  }
+  
+  .room__hosted p {
+    font-size: 12px;
+    margin: 0;
+  }
+  
+  .room__author {
+    display: flex;
+    align-items: center;
+  }
+  
+  .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 10px;
+  }
+  
+  .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Styles for the room top bar */
+  .room__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .room__topLeft h3 {
+    margin: 0;
+    font-size: 24px;
+  }
+  
+  .room__topLeft svg {
+    width: 32px;
+    height: 32px;
+    fill: #333;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+  
+  .room__topRight a {
+    display: inline-block;
+    margin-left: 10px;
+  }
+  
+  .room__topRight svg {
+    width: 32px;
+    height: 32px;
+    fill: #333;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+  
+  /* Styles for the room details */
+  .room__details {
+    margin-top: 20px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  

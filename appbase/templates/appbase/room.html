@@ -18,7 +18,6 @@
             </div>
 
 
-
             {% if  room.host == request.user%}
 
             <div class="room__topRight">
@@ -60,8 +59,8 @@
             {% endif %}
 
           </div>
-          <div class="room__box scroll">
-            <div class="room__header scroll">
+          <div class="room__box ">
+            <div class="room__header ">
               <div class="room__info">
                 <h3>{{room.name}}</h3>
                 <span>{{room.created|timesince}}ago</span>
@@ -81,9 +80,17 @@
                 corporis laboriosam deleniti molestias?
               </div> {% endcomment %}
               <span class="room__topics">{{room.topic}}</span>
+              <div class="text-content">
+                {{room.description|safe}}
             </div>
+            </div>
+            
             <div class="room__conversation">
               <div class="threads scroll">
+                <h3 class="messages__top" style="color: azure;">Messages</h3>
+                {% if room_messages|length == 0 %}
+                <h3 class="empty_messages">NO MESSAGES YET!!</h3>
+                {% endif %}
                 {% for message in room_messages %}
                 <div class="thread">
                   <div class="thread__top">
@@ -92,7 +99,7 @@
                         <div class="avatar avatar--medium">
                           <img src="{{message.user.avatar.url}}" />
                         </div>
-                        <span>@{{message.user.username}}}</span>
+                        <span>@{{message.user.username}}</span>
                       </a>
                         <span class="thread__date">{{message.created|timesince}} ago</span>
                     </div>
@@ -145,6 +152,6 @@
         <!--  End -->
       </div>
     </main>
-    <script src="script.js"></script>
+    {% comment %} <script src="{% static 'js/script.js' %} "></script> {% endcomment %}
 
     {% endblock content %}

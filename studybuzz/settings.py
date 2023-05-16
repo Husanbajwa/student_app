@@ -1,3 +1,4 @@
+
 import os.path
 from pathlib import Path
 
@@ -28,7 +29,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'appbase.apps.AppbaseConfig',
     'channels',
-    'froala_editor',
+    'tinymce',
 ]
 
 AUTH_USER_MODEL ='appbase.User'

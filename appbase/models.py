@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.contrib.auth import get_user_model
 from django.db.models import Q
-from froala_editor.fields import FroalaField
+from tinymce.models import HTMLField
 from .helpers import *
 
 
@@ -22,30 +22,11 @@ class Topic(models.Model):
     def __str__(self):
         return self.name
 
-# class BlogModel(models.Model):
-#     title = models.CharField(max_length=1000)
-#     content = FroalaField()
-#     slug = models.SlugField(max_length=1000, null=True, blank=True)
-#     user = models.ForeignKey(User, blank=True, null=True,
-#                              on_delete=models.CASCADE)
-#     image = models.ImageField(upload_to='blog')
-#     created_at = models.DateTimeField(auto_now_add=True)
-#     upload_to = models.DateTimeField(auto_now=True)
-
-
-#     def __str__(self):
-#         return self.title
-
-
-#     def save(self, *args, **kwargs):
-#         self.slug = generate_slug(self.title)
-#         super(BlogModel, self).save(*args, **kwargs)
-
 class Room(models.Model):
     host=models.ForeignKey(User,on_delete=models.SET_NULL,null=True)
     topic =models.ForeignKey(Topic,on_delete=models.SET_NULL,null=True)
     name = models.CharField(max_length=200)
-    description = FroalaField()
+    description = HTMLField()
     image = models.ImageField(null=True,upload_to='blog',default="default.png")
     participants =models.ManyToManyField(User,related_name='participants',blank=True)
     updated = models.DateTimeField(auto_now=True)

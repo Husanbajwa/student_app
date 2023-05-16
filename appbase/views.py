@@ -90,6 +90,7 @@ def room(request, pk):
 
 def userProfile(request,pk):
     user = User.objects.get(id=pk)
+    # messages 
     if request.method == 'POST':
         try:
             thread = Thread.objects.create(
@@ -100,7 +101,7 @@ def userProfile(request,pk):
         except IntegrityError:
             # thread already exists, it shows the messages page itself
             return redirect('messages')
-
+    # profile page
     rooms = user.room_set.all()
     room_messages = user.message_set.all()
     topics = Topic.objects.all()

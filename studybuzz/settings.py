@@ -15,7 +15,7 @@ SECRET_KEY = 'django-insecure-a5okk5tz@30#t24qobl63i7yczt3!__)w41gtd-e@m=d&jp#nf
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['studybuzz.online','52.66.201.188','www.studybuzz.online']
 
 
 # Application definition
